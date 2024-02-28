@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Service;
 
 import fr.eni.projetEncheres.bo.Utilisateur;
-import fr.eni.projetEncheres.repository.UtilisateurRepository;
+import fr.eni.projetEncheres.dal.UtilisateurRepository;
 
 @Service
 public class UtilisateurService {
