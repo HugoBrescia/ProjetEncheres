@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Nouvelle vente</title>
+</head>
+<body>
+
+	<div>
+		
+		<header>
+			<nav>
+				<div>
+					<a href="#">ENI-Enchères</a>
+				</div>
+			</nav>
+		</header>
+		
+		<main>
+			<h1>Nouvelle vente</h1>
+			<p>Article :</p>
+			<input type="text">
+			<p>Description :</p>
+			<textarea rows="5" cols="30"></textarea>
+			<p>Catégorie :</p>
+			<select>
+				<option value="Informatique">Informatique</option>
+				<option value="Ameublement">Ameublement</option>
+				<option value="Vêtement">Vêtement</option>
+				<option value="Sport & Loisirs">Sport & Loisirs</option>
+			</select>
+			<p>Photo de l'article :</p>
+			<input type="file" accept="image/png, image/jpeg">
+			<p>Mise à prix :</p>
+			
+			<p>Début de l'enchère :</p>
+			<input type="date">
+			<p>Fin de l'enchère :</p>
+			<input type="date">
+			<div class="retrait">
+				<p>Retrait</p>
+				<p>Rue :</p>
+				<input type="text">
+				<p>Code postal :</p>
+				<input type="text">
+				<p>Ville :</p>
+				<input type="text">
+			</div>
+			<button type="submit">Enregistrer</button>
+			<button type="button">Annuler</button>
+			
+		</main>
+		
+	</div>
+
+</body>
+</html>
