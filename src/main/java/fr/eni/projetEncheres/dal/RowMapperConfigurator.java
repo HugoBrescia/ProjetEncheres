@@ -1,4 +1,4 @@
-package fr.eni.projetEncheres.dal.rowMapperS;
+package fr.eni.projetEncheres.dal;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +17,7 @@ public class RowMapperConfigurator {
 	public static RowMapper<Utilisateur> utilisateurRowMapper() {
 		RowMapper<Utilisateur> rowMapper = new RowMapper<>() {
 
+			// prévoir programation par réflexion et introspection  (java avancée)
 			@Override
 			public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// méthode RowMapper Utilisateur (appel = RowMapperS.utilisateurRowMapper)
