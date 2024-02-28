@@ -1,7 +1,6 @@
 package fr.eni.projetEncheres.bo;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class ArticleVendu {
 
