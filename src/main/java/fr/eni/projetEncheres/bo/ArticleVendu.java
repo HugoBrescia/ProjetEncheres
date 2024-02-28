@@ -1,5 +1,6 @@
 package fr.eni.projetEncheres.bo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class ArticleVendu {
@@ -7,13 +8,13 @@ public class ArticleVendu {
 	
 	
 	// ATTRIBUTS 
-	private int noArticle;
+	private Integer noArticle;
 	private String nomArticle;
 	private String description;
-	private LocalDate dateDebutEncheres;
-	private LocalDate dateFinEncheres;
-	private Float miseAPrix;
-	private Float prixVente;
+	private Date dateDebutEncheres;
+	private Date dateFinEncheres;
+	private Integer miseAPrix;
+	private Integer prixVente;
 	private String etatVente;
 	
 	
@@ -23,8 +24,8 @@ public class ArticleVendu {
 	public ArticleVendu() {
 		super();
 	}
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, Float miseAPrix, Float prixVente, String etatVente) {
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, String etatVente) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -35,8 +36,8 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 	}
-	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			Float miseAPrix, Float prixVente, String etatVente) {
+	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres, Date dateFinEncheres,
+			Integer miseAPrix, Integer prixVente, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -62,10 +63,10 @@ public class ArticleVendu {
 	
 	
 	// GETTERS AND SETTERS 
-	public int getNoArticle() {
+	public Integer getNoArticle() {
 		return noArticle;
 	}
-	public void setNoArticle(int noArticle) {
+	public void setNoArticle(Integer noArticle) {
 		this.noArticle = noArticle;
 	}
 	public String getNomArticle() {
@@ -80,28 +81,28 @@ public class ArticleVendu {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public LocalDate getDateDebutEncheres() {
+	public Date getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
-	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
-		this.dateDebutEncheres = dateDebutEncheres;
+	public void setDateDebutEncheres(Date date) {
+		this.dateDebutEncheres = date;
 	}
-	public LocalDate getDateFinEncheres() {
+	public Date getDateFinEncheres() {
 		return dateFinEncheres;
 	}
-	public void setDateFinEncheres(LocalDate dateFinEncheres) {
+	public void setDateFinEncheres(Date dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
-	public Float getMiseAPrix() {
+	public Integer getMiseAPrix() {
 		return miseAPrix;
 	}
-	public void setMiseAPrix(Float miseAPrix) {
-		this.miseAPrix = miseAPrix;
+	public void setMiseAPrix(Integer i) {
+		this.miseAPrix = i;
 	}
-	public Float getPrixVente() {
+	public Integer getPrixVente() {
 		return prixVente;
 	}
-	public void setPrixVente(Float prixVente) {
+	public void setPrixVente(Integer prixVente) {
 		this.prixVente = prixVente;
 	}
 	public String getEtatVente() {

@@ -3,14 +3,14 @@ package fr.eni.projetEncheres.bo;
 public class Categorie {
 
 	// ATTRIBUTS
-	private int noCategorie;
+	private Integer noCategorie;
 	private String libelle;
 	
 	// CONSTRUCTEURS 
 	public Categorie() {
 		super();
 	}
-	public Categorie(int noCategorie, String libelle) {
+	public Categorie(Integer noCategorie, String libelle) {
 		super();
 		this.noCategorie = noCategorie;
 		this.libelle = libelle;
@@ -26,10 +26,10 @@ public class Categorie {
 	
 	
 	// GETTERS AND SETTERS 
-	public int getNoCategorie() {
+	public Integer getNoCategorie() {
 		return noCategorie;
 	}
-	public void setNoCategorie(int noCategorie) {
+	public void setNoCategorie(Integer noCategorie) {
 		this.noCategorie = noCategorie;
 	}
 	public String getLibelle() {
