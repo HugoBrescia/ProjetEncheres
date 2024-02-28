@@ -1,21 +1,23 @@
 package fr.eni.projetEncheres.bo;
 
-import java.time.LocalDate;
+
+
+import java.util.Date;
 
 public class Enchere {
 
 	
 	
 	// ATTRIBUTS
-	private LocalDate dateEnchere;
-	private Float montant_enchere;
+	private Date dateEnchere;
+	private Integer montant_enchere;
 	
 	
 	// CONSTRUCTEURS 
 	public Enchere() {
 		super();
 	}
-	public Enchere(LocalDate dateEnchere, Float montant_enchere) {
+	public Enchere(Date dateEnchere, Integer montant_enchere) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montant_enchere = montant_enchere;
@@ -23,16 +25,16 @@ public class Enchere {
 	
 	
 	// GETTERS AND SETTERS 
-	public LocalDate getDateEnchere() {
+	public Date getDateEnchere() {
 		return dateEnchere;
 	}
-	public void setDateEnchere(LocalDate dateEnchere) {
+	public void setDateEnchere(Date dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
-	public Float getMontant_enchere() {
+	public Integer getMontant_enchere() {
 		return montant_enchere;
 	}
-	public void setMontant_enchere(Float montant_enchere) {
+	public void setMontant_enchere(Integer montant_enchere) {
 		this.montant_enchere = montant_enchere;
 	}
 	
