@@ -15,7 +15,7 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private Integer credit;
-	private String administrateur;
+	private boolean administrateur;
 
 	// CONSTRUCTEURS
 	public Utilisateur() {
@@ -23,7 +23,7 @@ public class Utilisateur {
 	}
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String email, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, Integer credit, String administrateur) {
+			int codePostal, String ville, String motDePasse, Integer credit, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
@@ -39,7 +39,7 @@ public class Utilisateur {
 	}
 
 	public Utilisateur(String pseudo, String nom, String email, int telephone, String rue, int codePostal, String ville,
-			String motDePasse, Integer credit, String administrateur) {
+			String motDePasse, Integer credit, boolean administrateur) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -164,15 +164,13 @@ public class Utilisateur {
 		this.credit = credit;
 	}
 
-	public String getAdministrateur() {
+	public boolean isAdministrateur() {
 		return administrateur;
 	}
 
-	public void setAdministrateur(String administrateur) {
+	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-
-
 
 	public String getUsername() {
 		
