@@ -1,4 +1,4 @@
-package fr.eni.projetEncheres.dal.rowMapperS;
+package fr.eni.projetEncheres.dal;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
