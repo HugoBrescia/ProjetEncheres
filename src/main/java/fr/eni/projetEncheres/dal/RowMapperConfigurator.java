@@ -36,6 +36,7 @@ public class RowMapperConfigurator {
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.isAdministrateur();
 
+
 				return utilisateur;
 			}
 		};
