@@ -1,5 +1,6 @@
 package fr.eni.projetEncheres.dal;
 
+
 import java.util.Optional;
 
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.eni.projetEncheres.bo.Utilisateur;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
+
 
 
 
@@ -79,6 +81,7 @@ public class UtilisateursRepositoryImpl implements UtilisateurRepository{
 		    
 		    return utilisateur;
 	}
+
 	
 
 	
