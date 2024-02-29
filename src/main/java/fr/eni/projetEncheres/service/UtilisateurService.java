@@ -26,5 +26,14 @@ public class UtilisateurService {
 	public void saveUtilisateur(Utilisateur utilisateur) {
 		utilisateurRepository.save(utilisateur);
 	}
+	
+	@Override
+	public Utilisateur findUtilisateur(identifiant) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateur(identifiant);
+		if(optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		}
+		throw new UtilisateurNotFound();
+	}
 
 }
