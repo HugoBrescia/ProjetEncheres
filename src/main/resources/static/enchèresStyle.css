@@ -1,0 +1,64 @@
+/* Style de base pour la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Conteneur principal pour les enchères */
+.enchere-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Titre de l'enchère */
+.enchere-titre {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Description de l'enchère */
+.enchere-description {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Détails du prix */
+.prix-actuel {
+    color: #007BFF;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Bouton pour enchérir */
+.bouton-encherir {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.bouton-encherir:hover {
+    background-color: #218838;
+}
+
+/* Responsive design pour les petits écrans */
+@media (max-width: 600px) {
+    .enchere-container {
+        margin: 0 10px;
+        padding: 10px;
+    }
+
+    .enchere-titre, .enchere-description, .prix-actuel {
+        text-align: center;
+    }
+}

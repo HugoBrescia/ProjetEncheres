@@ -34,7 +34,7 @@ public class RowMapperConfigurator {
 				utilisateur.setVille(rs.getString("ville"));
 				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 				utilisateur.setCredit(rs.getInt("credit"));
-				utilisateur.setAdministrateur(rs.getString("administrateur"));
+				utilisateur.isAdministrateur();
 
 				return utilisateur;
 			}
