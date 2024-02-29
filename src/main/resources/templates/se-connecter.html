@@ -5,23 +5,16 @@
 <title>Se connecter</title>
 </head>
 <body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 
 	<div>
-		
-		<header>
-			<nav>
-				<div>
-					<a href="#">ENI-Enchères</a>
-				</div>	
-			</nav>
-		</header>
 		
 		<main>
 			<div>
 				<p>Indentifiant :</p>
 				<input type="text">
 				<p>Mot de passe :</p>
-				<input type="text">
+				<input type="password">
 				<button type="submit">Connexion</button>
 				<input type="checkbox" id="memoriser">
 				<label for="memoriser">Se souvenir de moi</label>
@@ -31,10 +24,6 @@
 				<button type="button">Créer un compte</button>
 			</div>
 		</main>
-		
-		<footer>
-			
-		</footer>
 		
 	</div>
 
