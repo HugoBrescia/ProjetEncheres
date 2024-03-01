@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import fr.eni.projetEncheres.bll.UtilisateurService;
 import fr.eni.projetEncheres.bo.Utilisateur;
-import fr.eni.projetEncheres.service.UtilisateurService;
+import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
+import fr.eni.projetEncheres.exceptions.UtilisateurNotFoundRuntimeException;
 
 @Controller
 public class CreationCompteController {
@@ -17,6 +19,13 @@ public class CreationCompteController {
 	@Autowired
 	private UtilisateurService utilisateurService;
 	
+	
+	
+	public CreationCompteController(UtilisateurService utilisateurService) {
+		super();
+		this.utilisateurService = utilisateurService;
+	}
+
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("utilisateur", new Utilisateur());
@@ -24,13 +33,13 @@ public class CreationCompteController {
 	}
 	
 	@PostMapping("/register")
-    public String registerUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result, Model model) {
+    public String registerUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result, Model model) throws UtilisateurNotFoundRuntimeException, UtilisateurNotFound {
         if (result.hasErrors()) {
             return "register";
         }
 
         // Vérification pseudo unique
-        if (!utilisateurService.isUsernameUnique(utilisateur.getUsername())) {
+        if (!utilisateurService.isUsernameUnique(utilisateur.getPseudo())) {
             model.addAttribute("usernameError", "Ce pseudo est déjà utilisé.");
             return "register";
         }

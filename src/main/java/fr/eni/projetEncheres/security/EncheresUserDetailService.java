@@ -16,27 +16,29 @@ import fr.eni.projetEncheres.exceptions.EmailNotFoundException;
 @Component
 public class EncheresUserDetailService implements UserDetailsService{
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<Utilisateur> optUtilisateur = UtilisateurRepository.findByUsername(username);
-		if(optUtilisateur.isEmpty()) {
-			throw new UsernameNotFoundException("utilisateur non trouve : "+username+" éssayez avec votre Email");
-		}
-	}
 	
+	private UtilisateurRepository utilisateurRepository;
+	
+	
+	public EncheresUserDetailService(UtilisateurRepository utilisateurRepository) {
+		super();
+		this.utilisateurRepository = utilisateurRepository;
+	}
+
+
 	@Override
-	public UserDetails loadUserByEmail(String email) throws EmailNotFoundException {
-		Optional<Utilisateur> optUtilisateur = UtilisateurRepository.findByEmail(email);
-		if(optUtilisateur.isEmpty()) {
-			throw new EmailNotFoundException("Email de l'utilisateur non trouve : "+email+" éssayez avec votre nom d'utilisateur (pseudo)");
-		}
+	public UserDetails loadUserByUsername(String identifiant) throws UsernameNotFoundException {
+	    Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateur(identifiant);
+	    if(optUtilisateur.isEmpty()) {
+	        throw new UsernameNotFoundException("Utilisateur non trouvé avec le nom d'utilisateur ou l'email : " + identifiant);
+	    }
 		
 		
 		Utilisateur utilisateur = optUtilisateur.get();
 		
 		 UserBuilder userBuilder = User.withUsername(utilisateur.getPseudo())
             .password(utilisateur.getMotDePasse())
-            .roles("MEMBRE");
+            .roles("UTILISATEUR");
 		 
 		 if(utilisateur.isAdministrateur()) {
 			 userBuilder.roles("ADMINISTRATEUR");

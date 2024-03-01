@@ -13,9 +13,8 @@ import org.springframework.stereotype.Repository;
 
 import fr.eni.projetEncheres.bo.Utilisateur;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
-
-
-
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 @Repository
 public class UtilisateursRepositoryImpl implements UtilisateurRepository{
@@ -53,7 +52,7 @@ public class UtilisateursRepositoryImpl implements UtilisateurRepository{
 		}
 
 	@Override
-	public Utilisateur save(Utilisateur utilisateur) {
+	public Utilisateur save(Utilisateur utilisateur) throws UtilisateurNotFound {
 		 if(utilisateur.getNoUtilisateur() == null) {
 		        // Ajout d'un nouvel utilisateur
 		        String sql = "INSERT INTO utilisateurs (pseudo, email, nom, prenom, motDePasse) VALUES (:pseudo, :email, :nom, :prenom, :motDePasse)";
@@ -69,17 +68,29 @@ public class UtilisateursRepositoryImpl implements UtilisateurRepository{
 		        
 		        namedParameterJdbcTemplate.update(sql, parameterSource, keyHolder, new String[]{"id"});
 		        
-		        utilisateur.setId(keyHolder.getKey().intValue());
+		        utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
 		    } else {
 		        // Modification d'un utilisateur existant
 		        String sql = "UPDATE utilisateurs SET pseudo = ?, email = ?, nom = ?, prenom = ?, motDePasse = ? WHERE id = ?";
-		        int nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getEmail(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getMotDePasse(), utilisateur.getId());
+		        int nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getEmail(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getMotDePasse(), utilisateur.getNoUtilisateur());
 		        if(nbLignes == 0) {
 		            throw new UtilisateurNotFound(); // Assurez-vous d'avoir une exception appropriée définie
 		        }
 		    }
 		    
 		    return utilisateur;
+	}
+
+	@Override
+	public boolean isUsernameUnique(String pseudo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEmailUnique(String email) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
