@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.eni.projetEncheres.bll.UtilisateurService;
 import fr.eni.projetEncheres.bo.Utilisateur;
+import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFoundRuntimeException;
 
 @Controller
@@ -32,7 +33,7 @@ public class CreationCompteController {
 	}
 	
 	@PostMapping("/register")
-    public String registerUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result, Model model) throws UtilisateurNotFoundRuntimeException {
+    public String registerUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result, Model model) throws UtilisateurNotFoundRuntimeException, UtilisateurNotFound {
         if (result.hasErrors()) {
             return "register";
         }

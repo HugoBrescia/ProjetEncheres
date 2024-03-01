@@ -16,9 +16,13 @@ public class ConnexionServiceImpl implements ConnexionService {
 	
 	@Override
 	public boolean authentificationUtilisateur(String pseudo, String motDePasse) {
-		Optional<Utilisateur> utilisateur = utilisateurRepository.findUtilisateur(pseudo);
-		return utilisateur != null && utilisateur.getMotDePasse().equals(motDePasse);
-		
+	    Optional<Utilisateur> utilisateurOptional = utilisateurRepository.findUtilisateur(pseudo);
+	    if (utilisateurOptional.isPresent()) {
+	        Utilisateur utilisateur = utilisateurOptional.get();
+	        return utilisateur.getMotDePasse().equals(motDePasse);
+	    }
+	    return false;
 	}
+
 	
 }

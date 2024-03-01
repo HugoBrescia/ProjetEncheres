@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import fr.eni.projetEncheres.bo.Utilisateur;
 import fr.eni.projetEncheres.dal.UtilisateurRepository;
+import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFoundRuntimeException;
 
 @Service
@@ -21,7 +22,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	
 	
 	@Override
-	public void saveUtilisateur(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException {
+	public void saveUtilisateur(Utilisateur utilisateur) throws UtilisateurNotFound, UtilisateurNotFoundRuntimeException {
 		utilisateurRepository.save(utilisateur);
 		
 	}

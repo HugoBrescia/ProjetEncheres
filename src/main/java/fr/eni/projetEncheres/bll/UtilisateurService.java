@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import fr.eni.projetEncheres.bo.Utilisateur;
+import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFoundRuntimeException;
 
 
@@ -13,7 +14,7 @@ import fr.eni.projetEncheres.exceptions.UtilisateurNotFoundRuntimeException;
 public interface UtilisateurService {
 
 	
-	public void saveUtilisateur(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException;
+	public void saveUtilisateur(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException, UtilisateurNotFound;
 	
 	public Optional<Utilisateur> findUtilisateur(String identifiant);
 
