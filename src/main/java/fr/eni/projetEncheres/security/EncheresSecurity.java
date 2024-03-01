@@ -24,12 +24,13 @@ public class EncheresSecurity  {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests				
-				.requestMatchers("/", "/films", "/css/*").permitAll()
-				.requestMatchers("/creer").hasRole("MEMBRE")
+				.requestMatchers("/", "/index", "/inscription", "/se-connecter", "/css/*").permitAll()
+				.requestMatchers("/afficher-profil-utilisateur", "/index-connecte").hasRole("UTILISATEUR")
+				.requestMatchers("/admin/**").hasRole("ADMINISTRATEUR")
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
-				.loginPage("/login")
+				.loginPage("/se-connecter")
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll());
