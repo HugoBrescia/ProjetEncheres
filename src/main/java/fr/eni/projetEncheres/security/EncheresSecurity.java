@@ -24,7 +24,7 @@ public class EncheresSecurity  {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests				
-				.requestMatchers(rs("/", "/index", "/inscription", "/se-connecter", "/css/*").permitAll()
+				.requestMatchers("/", "/index", "/inscription", "/se-connecter", "/css/*").permitAll()
 				.requestMatchers("/afficher-profil-utilisateur", "/index-connecte").hasRole("UTILISATEUR")
 				.requestMatchers("/admin/**").hasRole("ADMINISTRATEUR")
 				.anyRequest().authenticated()

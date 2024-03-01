@@ -17,7 +17,9 @@ public class RowMapperConfigurator {
 	public static RowMapper<Utilisateur> utilisateurRowMapper() {
 		RowMapper<Utilisateur> rowMapper = new RowMapper<>() {
 
+
 			// prévoir programation par réflexion et introspection  (java avancée)
+
 			@Override
 			public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// méthode RowMapper Utilisateur (appel = RowMapperS.utilisateurRowMapper)
@@ -35,6 +37,7 @@ public class RowMapperConfigurator {
 				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.isAdministrateur();
+
 
 
 				return utilisateur;

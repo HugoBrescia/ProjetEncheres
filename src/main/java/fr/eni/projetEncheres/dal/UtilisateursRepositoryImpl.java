@@ -1,7 +1,6 @@
 package fr.eni.projetEncheres.dal;
 
 import java.util.Optional;
-
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,13 +10,13 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-
 import fr.eni.projetEncheres.bo.Utilisateur;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFound;
 import fr.eni.projetEncheres.exceptions.UtilisateurNotFoundRuntimeException;
 
 @Repository
 public class UtilisateursRepositoryImpl implements UtilisateurRepository {
+
 
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
