@@ -8,6 +8,7 @@ public class Utilisateur {
 	private Integer noUtilisateur;
 	private String pseudo;
 	private String nom;
+	private String prenom;
 	private String email;
 	private int telephone;
 	private String rue;
@@ -16,18 +17,19 @@ public class Utilisateur {
 	private String motDePasse;
 	private Integer credit;
 	private boolean administrateur;
-
+	
 	// CONSTRUCTEURS
 	public Utilisateur() {
 		super();
 	}
 
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String email, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, Integer credit, boolean administrateur) {
+	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
+			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
+		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
@@ -38,11 +40,12 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	public Utilisateur(String pseudo, String nom, String email, int telephone, String rue, int codePostal, String ville,
-			String motDePasse, Integer credit, boolean administrateur) {
+	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
+			int codePostal, String ville, String motDePasse, Integer credit, boolean administrateur) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
+		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
@@ -53,37 +56,6 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	// TO STRING
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Utilisateur [noUtilisateur=").append(noUtilisateur).append(", pseudo=").append(pseudo)
-				.append(", nom=").append(nom).append(", email=").append(email).append(", telephone=").append(telephone)
-				.append(", rue=").append(rue).append(", codePostal=").append(codePostal).append(", ville=")
-				.append(ville).append(", motDePasse=").append(motDePasse).append(", credit=").append(credit)
-				.append(", administrateur=").append(administrateur).append("]");
-		return builder.toString();
-	}
-
-	// HASHCODE de MDP
-	@Override
-	public int hashCode() {
-		return Objects.hash(motDePasse);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Utilisateur other = (Utilisateur) obj;
-		return Objects.equals(motDePasse, other.motDePasse);
-	}
-
-	// GETTERS AND SETTERS
 	public Integer getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -106,6 +78,14 @@ public class Utilisateur {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public String getEmail() {
@@ -172,9 +152,38 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	public String getUsername() {
-		
-		return null;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Utilisateur [noUtilisateur=").append(noUtilisateur).append(", pseudo=").append(pseudo)
+				.append(", nom=").append(nom).append(", prenom=").append(prenom).append(", email=").append(email)
+				.append(", telephone=").append(telephone).append(", rue=").append(rue).append(", codePostal=")
+				.append(codePostal).append(", ville=").append(ville).append(", motDePasse=").append(motDePasse)
+				.append(", credit=").append(credit).append(", administrateur=").append(administrateur).append("]");
+		return builder.toString();
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(motDePasse);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utilisateur other = (Utilisateur) obj;
+		return Objects.equals(motDePasse, other.motDePasse);
+	}
+	
+	
+	
+	
+	
 }
+
+	
