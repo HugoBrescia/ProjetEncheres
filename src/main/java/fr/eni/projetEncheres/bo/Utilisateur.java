@@ -8,6 +8,7 @@ public class Utilisateur {
 	private Integer noUtilisateur;
 	private String pseudo;
 	private String nom;
+	private String prenom;
 	private String email;
 	private int telephone;
 	private String rue;
@@ -175,6 +176,14 @@ public class Utilisateur {
 	public String getUsername() {
 		
 		return null;
+	}
+
+	public Object getPrenom() {
+		return prenom;
+	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 }
