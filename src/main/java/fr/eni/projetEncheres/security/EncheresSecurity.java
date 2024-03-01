@@ -30,7 +30,7 @@ public class EncheresSecurity  {
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
-				.loginPage("/se-connecter")
+				.loginPage("/index")
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll());
