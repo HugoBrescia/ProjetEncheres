@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Utilisateurs</title>
+    <!-- Les liens vers les fichiers CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Liste des Utilisateurs</h2>
+        
+        <!-- Liste des administrateurs -->
+        <h3>Administrateurs</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Adresse</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Utilisation de Thymeleaf pour afficher les administrateurs -->
+                <tr th:each="admin : ${listeAdmins}">
+                    <td th:text="${admin.pseudo}"></td>
+                    <td th:text="${admin.email}"></td>
+                    <td th:text="${admin.adresse}"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Liste des utilisateurs non-administrateurs -->
+        <h3>Utilisateurs</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Adresse</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Utilisation de Thymeleaf pour afficher les utilisateurs non-administrateurs -->
+                <tr th:each="utilisateur : ${listeUtilisateurs}">
+                    <td th:text="${utilisateur.pseudo}"></td>
+                    <td th:text="${utilisateur.email}"></td>
+                    <td th:text="${utilisateur.adresse}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

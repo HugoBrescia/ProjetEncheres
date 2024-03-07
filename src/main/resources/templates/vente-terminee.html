@@ -1,28 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Vente terminée</title>
-<link rel="stylesheet" href="css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vente terminée</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
 </head>
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+    <!-- Inclure l'entête -->
+    <div th:replace="fragments/fragment-entete"></div>
 
-	<div>
-		
-		<main>
-			<h1>a remporté la vente</h1>
-			<p>Article :</p>
-			<p>Description :</p>
-			<p>Meilleure offre :</p>
-			<p>Mise à prix :</p>
-			<p>Fin de l'enchère :</p>
-			<p>Retrait :</p>
-			<p>Vendeur :</p>
-			<button type="button">Retrait effectué</button>
-		</main>
-		
-	</div>
-
+    <h1>Vente terminée</h1>
+    <!-- Contenu de la page -->
 </body>
 </html>

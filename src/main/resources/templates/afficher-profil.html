@@ -1,27 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Affichage profil</title>
-<link rel="stylesheet" href="css/main.css">
+    <title>Afficher Profil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-	
-	<div>
-		
-		<main>
-			<p>Pseudo :</p>
-			<p>Nom :</p>
-			<p>Prénom :</p>
-			<p>Email :</p>
-			<p>Téléphone :</p>
-			<p>Rue :</p>
-			<p>Code postal :</p>
-			<p>Ville :</p>
-		</main>
-		
-	</div>
-
+    <div class="container mt-4">
+        <h2>Afficher Profil</h2>
+        <form>
+            <div class="form-group">
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" class="form-control" id="pseudo" th:value="${utilisateur.pseudo}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" class="form-control" id="prenom" th:value="${utilisateur.prenom}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Téléphone :</label>
+                <input type="text" class="form-control" id="telephone" th:value="${utilisateur.telephone}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="codePostal">Code Postal :</label>
+                <input type="text" class="form-control" id="codePostal" th:value="${utilisateur.codePostal}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="motDePasse">Mot de Passe :</label>
+                <input type="password" class="form-control" id="motDePasse" th:value="${utilisateur.motDePasse}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" id="nom" th:value="${utilisateur.nom}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" class="form-control" id="email" th:value="${utilisateur.email}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="rue">Rue :</label>
+                <input type="text" class="form-control" id="rue" th:value="${utilisateur.rue}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville :</label>
+                <input type="text" class="form-control" id="ville" th:value="${utilisateur.ville}" readonly>
+            </div>
+            <a href="/utilisateur/{id}/edit" class="btn btn-primary">Modifier Profil</a>
+            <a href="/" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
 </body>
 </html>

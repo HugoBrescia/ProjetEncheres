@@ -1,32 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Détail vente</title>
-<link rel="stylesheet" href="css/main.css">
+    <title>Liste des Enchères</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+    <div class="container mt-5">
+        <h2>Liste des Enchères</h2>
 
-	<div>
-		
-		<main>
-			<h1>Détail vente</h1>
-			<p>Article :</p>
-			<p>Description :</p>
-			<p>Catégorie :</p>
-			<p>Meilleure offre :</p>
-			<p>Mise à prix :</p>
-			<p>Fin de l'enchère :</p>
-			<p>Retrait :</p>
-			<p>Vendeur :</p>
-			<p>Ma proposition :</p>
-			
-			<button type="submit">Enchérir</button>
-			
-		</main>
-		
-	</div>
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Rechercher par nom d'annonce...">
+            </div>
+            <div class="col">
+                <select class="form-control">
+                    <option value="">Toutes</option>
 
+                </select>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary">Rechercher</button>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nom de l'annonce</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Prix initial</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr th:each="vente : ${ventes}">
+                    <td th:text="${vente.nomAnnonce}"></td>
+                    <td th:text="${vente.categorie}"></td>
+                    <td th:text="${vente.description}"></td>
+                    <td th:text="${vente.prixInitial}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

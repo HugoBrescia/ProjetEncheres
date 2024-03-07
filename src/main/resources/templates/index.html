@@ -1,41 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Accueil</title>
-<link rel="stylesheet" href="css/main.css">
+    <title>Page d'accueil - ENI-Enchères</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 
-	<div>
-		
-		<main>
-			<h1>Liste des enchères</h1>
-			<div>
-				<p>Filtres :</p>
-				<input type="text" placeholder="Le nom de l'article contient">
-				<p>Catégorie :</p>
-				<select>
-					<option value="Informatique">Informatique</option>
-					<option value="Ameublement">Ameublement</option>
-					<option value="Vêtement">Vêtement</option>
-					<option value="Sport & Loisirs">Sport & Loisirs</option>
-				</select>
-				<button type="submit">Rechercher</button>
-			</div>
-			<div class="encheres_en_cours">
-				<div>
-					
-				</div>
-				<div>
-					
-				</div>
-			</div>
-		</main>
-		
-	</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    	<th:replace="fragments/fragment-navigation :: fragment-navigation">
+        <a class="navbar-brand" href="#" th:href="@{/}">ENI-Enchères</a>
+    </nav>
 
+    <div class="container mt-4">
+        <div class="jumbotron">
+            <h1 class="display-4">Bienvenue sur ENI-Enchères!</h1>
+            <p class="lead">Le meilleur site pour vos enchères en ligne.</p>
+            <hr class="my-4">
+            <p>Explorez les dernières offres ou mettez vos propres objets en vente.</p>
+            <a class="btn btn-primary btn-lg" href="#" th:href="@{/encheres}" role="button">Découvrez les enchères</a>
+            <a class="btn btn-secondary btn-lg" href="#" th:href="@{/vendre}" role="button">Vendre un article</a>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Placez votre pied de page ici.</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
