@@ -1,9 +1,7 @@
 package fr.eni.projetEnchereHugo.controller;
 
 import fr.eni.projetEnchereHugo.bll.ArticleVenduService;
-import fr.eni.projetEnchereHugo.bll.EnchereService;
 import fr.eni.projetEnchereHugo.bo.ArticleVendu;
-import fr.eni.projetEnchereHugo.bo.Enchere;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

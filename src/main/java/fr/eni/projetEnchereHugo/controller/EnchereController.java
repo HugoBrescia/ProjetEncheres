@@ -23,35 +23,35 @@ public class EnchereController {
     public String obtenirEnchereParId(@PathVariable int id, Model model) {
         Enchere enchere = enchereService.obtenirEnchereParId(id);
         model.addAttribute("enchere", enchere);
-        return "detail-vente"; // nom du fichier HTML dans src/main/resources/templates
+        return "detail-vente";
     }
 
     @GetMapping("/encheres/{id}/edit")
     public String afficherFormModifierEnchere(@PathVariable int id, Model model) {
         Enchere enchere = enchereService.obtenirEnchereParId(id);
         model.addAttribute("enchere", enchere);
-        return "modifier-enchere"; // nom du fichier HTML dans src/main/resources/templates
+        return "modifier-enchere"; 
     }
 
     @PostMapping("/encheres")
     public String ajouterEnchere(@Validated @ModelAttribute Enchere enchere, BindingResult result) {
         if (result.hasErrors()) {
-            return "creation-vente"; // Utilisez le nom correct de votre template si différent
+            return "creation-vente"; 
         }
         enchereService.ajouterEnchere(enchere);
-        return "redirect:/"; // Ou une autre route si nécessaire
+        return "redirect:/"; 
     }
 
 
     @PutMapping("/encheres/{id}")
     public String mettreAJourEnchere(@PathVariable int id, @ModelAttribute Enchere enchere) {
         enchereService.mettreAJourEnchere(id, enchere);
-        return "redirect:/"; // redirige vers la page d'accueil après la mise à jour
+        return "redirect:/"; 
     }
 
     @DeleteMapping("/encheres/{id}")
     public String supprimerEnchere(@PathVariable int id) {
         enchereService.supprimerEnchere(id);
-        return "redirect:/"; // redirige vers la page d'accueil après la suppression
+        return "redirect:/"; 
     }
 }

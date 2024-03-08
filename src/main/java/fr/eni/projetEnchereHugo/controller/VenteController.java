@@ -10,12 +10,12 @@ public class VenteController {
 
 	@GetMapping("/vente/nouvelle")
 	public String afficherPageCreationVente() {
-	    return "nouvelle-vente"; // Nom du fichier HTML correct
+	    return "nouvelle-vente"; 
 	}
 
 	@GetMapping("/vente/{id}/modifier")
 	public String afficherPageModificationVente(@PathVariable int id, Model model) {
-	    return "modification-vente"; // Nom du fichier HTML correct
+	    return "modification-vente"; 
 	}
 
     @GetMapping("/supprimer-vente")

@@ -22,26 +22,26 @@ public class RetraitController {
     @GetMapping("/retraits")
     public String listerRetraits(Model model) {
         model.addAttribute("retraits", retraitService.listerTousLesRetraits());
-        return "liste_retraits"; // nom du fichier HTML dans src/main/resources/templates
+        return "liste_retraits"; 
     }
 
     @GetMapping("/retraits/{id}")
     public String afficherRetrait(@PathVariable int id, Model model) {
         Retrait retrait = retraitService.obtenirRetraitParId(id);
         model.addAttribute("retrait", retrait);
-        return "details_retrait"; // nom du fichier HTML dans src/main/resources/templates
+        return "details_retrait";
     }
 
     @GetMapping("/retraits/ajouter")
     public String afficherFormAjoutRetrait(Model model) {
         model.addAttribute("retrait", new Retrait());
-        return "ajout_retrait"; // nom du fichier HTML dans src/main/resources/templates
+        return "ajout_retrait"; 
     }
 
     @PostMapping("/retraits/ajouter")
     public String ajouterRetrait(@Validated @ModelAttribute Retrait retrait, BindingResult result) {
         if (result.hasErrors()) {
-            return "ajout_retrait"; // Restez sur la page si des erreurs sont présentes
+            return "ajout_retrait";
         }
         retraitService.ajouterRetrait(retrait);
         return "redirect:/retraits";
@@ -51,18 +51,18 @@ public class RetraitController {
     public String afficherFormModificationRetrait(@PathVariable int id, Model model) {
         Retrait retrait = retraitService.obtenirRetraitParId(id);
         model.addAttribute("retrait", retrait);
-        return "modification_retrait"; // nom du fichier HTML dans src/main/resources/templates
+        return "modification_retrait"; 
     }
 
     @PostMapping("/retraits/modifier/{id}")
     public String modifierRetrait(@PathVariable int id, @ModelAttribute Retrait retrait) {
         retraitService.mettreAJourRetrait(retrait);
-        return "redirect:/retraits"; // redirige vers la liste des retraits après la modification
+        return "redirect:/retraits"; 
     }
 
     @GetMapping("/retraits/supprimer/{id}")
     public String supprimerRetrait(@PathVariable int id) {
         retraitService.supprimerRetrait(id);
-        return "redirect:/retraits"; // redirige vers la liste des retraits après la suppression
+        return "redirect:/retraits";
     }
 }
