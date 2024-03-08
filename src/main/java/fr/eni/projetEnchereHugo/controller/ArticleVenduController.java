@@ -5,6 +5,8 @@ import fr.eni.projetEnchereHugo.bo.ArticleVendu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -17,53 +19,57 @@ public class ArticleVenduController {
         this.articleVenduService = articleVenduService;
     }
 
-    @GetMapping("/Articles")
+    @GetMapping("/articles")
     public String listerArticles(Model model) {
         model.addAttribute("articles", articleVenduService.getAll());
-        return "Liste-article"; // nom du fichier HTML dans src/main/resources/templates
+        return "liste-encheres";
     }
 
-    @GetMapping("/Article/{id}")
-    public String afficherArticle(@PathVariable int id, Model model) {
+    @GetMapping("/article/{id}")
+    public String afficherArticle(@PathVariable(name  ="id" ) int id, Model model) {
         ArticleVendu article = articleVenduService.getById(id);
         if (article == null) {
-            return "redirect:/Articles";
+            return "redirect:/liste-encheres";
         }
         model.addAttribute("article", article);
-        return "Detail-vente"; // nom du fichier HTML dans src/main/resources/templates
+        return "detail-vente"; 
     }
 
     @GetMapping("/Article/ajouter")
     public String afficherFormAjoutArticle(Model model) {
         model.addAttribute("article", new ArticleVendu());
-        return "Creation-vente"; // nom du fichier HTML dans src/main/resources/templates
+        return "creation-vente";
     }
 
     @PostMapping("/Article/ajouter")
-    public String ajouterArticle(@ModelAttribute ArticleVendu article) {
+    public String ajouterArticle(@Validated @ModelAttribute ArticleVendu article, BindingResult result) {
+        if (result.hasErrors()) {
+            return "creation-vente";
+        }
         articleVenduService.save(article);
-        return "redirect:/Articles";
+        return "redirect:/liste-encheres";
     }
+
 
     @GetMapping("/Article/modifier/{id}")
     public String afficherFormModifierArticle(@PathVariable int id, Model model) {
         ArticleVendu article = articleVenduService.getById(id);
         if (article == null) {
-            return "redirect:/Articles";
+            return "redirect:/liste-encheres";
         }
         model.addAttribute("article", article);
-        return "Modification-vente"; // nom du fichier HTML dans src/main/resources/templates
+        return "modification-vente"; 
     }
 
     @PostMapping("/Article/modifier")
     public String modifierArticle(@ModelAttribute ArticleVendu article) {
         articleVenduService.update(article);
-        return "redirect:/Articles";
+        return "redirect:/liste-encheres";
     }
 
     @GetMapping("/Article/supprimer/{id}")
     public String supprimerArticle(@PathVariable int id) {
         articleVenduService.delete(id);
-        return "redirect:/Articles";
+        return "redirect:/liste-encheres";
     }
 }

@@ -5,6 +5,8 @@ import fr.eni.projetEnchereHugo.bo.Retrait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -37,9 +39,12 @@ public class RetraitController {
     }
 
     @PostMapping("/retraits/ajouter")
-    public String ajouterRetrait(@ModelAttribute Retrait retrait) {
+    public String ajouterRetrait(@Validated @ModelAttribute Retrait retrait, BindingResult result) {
+        if (result.hasErrors()) {
+            return "ajout_retrait"; // Restez sur la page si des erreurs sont présentes
+        }
         retraitService.ajouterRetrait(retrait);
-        return "redirect:/retraits"; // redirige vers la liste des retraits après l'ajout
+        return "redirect:/retraits";
     }
 
     @GetMapping("/retraits/modifier/{id}")

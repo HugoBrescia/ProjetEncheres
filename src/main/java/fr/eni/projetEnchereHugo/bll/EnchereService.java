@@ -2,6 +2,9 @@ package fr.eni.projetEnchereHugo.bll;
 
 import fr.eni.projetEnchereHugo.bo.Enchere;
 import fr.eni.projetEnchereHugo.dal.EnchereDAO;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +30,7 @@ public class EnchereService {
         enchereDAO.delete(id);
     }
 
-    public Object listerToutesLesEncheres() {
+    public List<Enchere> listerToutesLesEncheres() {
         return enchereDAO.getAll();
     }
 }

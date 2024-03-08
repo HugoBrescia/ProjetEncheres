@@ -5,6 +5,8 @@ import fr.eni.projetEnchereHugo.bo.Categorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,10 +42,14 @@ public class CategorieController {
     }
 
     @PostMapping("/Categories/ajouter")
-    public String ajouterCategorie(@ModelAttribute Categorie categorie) {
+    public String ajouterCategorie(@Validated @ModelAttribute Categorie categorie, BindingResult result) {
+        if (result.hasErrors()) {
+            return "Ajouter-categorie"; // Assurez-vous que c'est le bon nom de fichier HTML
+        }
         categorieService.ajouterCategorie(categorie);
         return "redirect:/Categories";
     }
+
 
     @GetMapping("/Categories/modifier/{id}")
     public String afficherFormModifierCategorie(@PathVariable int id, Model model) {

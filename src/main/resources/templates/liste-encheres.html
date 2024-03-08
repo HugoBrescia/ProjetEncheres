@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Articles en Vente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav th:replace="fragment/fragment-entete"></nav>
+
+<div class="container mt-5">
+    <h2>Liste des Articles en Vente</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Numéro d'article</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Prix initial</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="article : ${articles}">
+                    <td th:text="${article.noArticle}"></td>
+                    <td th:text="${article.nomArticle}"></td>
+                    <td th:text="${article.description}"></td>
+                    <td th:text="${article.dateDebutEncheres}"></td>
+                    <td th:text="${article.dateFinEncheres}"></td>
+                    <td th:text="${article.miseAPrix}"></td>
+                    <td>
+                        <a th:href="@{/article/{id}(id=${article.noArticle})}" class="btn btn-info btn-sm">Voir</a>
+                        <a th:href="@{/Article/modifier/{id}(id=${article.noArticle})}" class="btn btn-primary btn-sm">Modifier</a>
+                        <a th:href="@{/Article/supprimer/{id}(id=${article.noArticle})}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

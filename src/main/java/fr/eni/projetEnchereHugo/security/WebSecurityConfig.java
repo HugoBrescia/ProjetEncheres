@@ -4,9 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -20,13 +19,13 @@ public class WebSecurityConfig {
         		
         		.authorizeHttpRequests(
     					auth->{
-    						auth.requestMatchers("/mon-compte/**").authenticated();
+    						auth.requestMatchers("/afficher-profil/**").authenticated();
     						auth.anyRequest().permitAll();
     					})
     				.formLogin( login->{
-    					login.loginPage("/login");
+    					login.loginPage("/se-connecter");
     					login.failureUrl("/login-error");
-    					login.defaultSuccessUrl("/mon-compte");
+    					login.defaultSuccessUrl("/afficher-profil");
     				})
     				.logout( logout->{
     					logout.logoutUrl("/logout");
@@ -37,17 +36,8 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    InMemoryUserDetailsManager userDetailsService() {
-
-    	UserDetails user = User.withUsername("user")
-                .password("{noop}password") 
-                .roles("USER")
-                .build();
-        UserDetails admin = User.withUsername("admin")
-                .password("{noop}password")
-                .roles("USER", "ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user, admin);
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
 }

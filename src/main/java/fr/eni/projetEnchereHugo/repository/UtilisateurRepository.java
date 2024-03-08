@@ -56,4 +56,5 @@ public class UtilisateurRepository {
         String sql = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
         jdbcTemplate.update(sql, id);
     }
+
 }

@@ -5,26 +5,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    	<th:replace="fragments/fragment-navigation :: fragment-navigation">
-        <a class="navbar-brand" href="#" th:href="@{/}">ENI-Enchères</a>
-    </nav>
-
+    <nav th:replace="fragment/fragment-entete"></nav>
+    
     <div class="container mt-4">
         <div class="jumbotron">
             <h1 class="display-4">Bienvenue sur ENI-Enchères!</h1>
             <p class="lead">Le meilleur site pour vos enchères en ligne.</p>
             <hr class="my-4">
             <p>Explorez les dernières offres ou mettez vos propres objets en vente.</p>
-            <a class="btn btn-primary btn-lg" href="#" th:href="@{/encheres}" role="button">Découvrez les enchères</a>
-            <a class="btn btn-secondary btn-lg" href="#" th:href="@{/vendre}" role="button">Vendre un article</a>
+            <div>
+                <h2>Liste des Enchères</h2>
+                <div th:if="${encheres.empty}">
+                    <p>Aucune enchère pour le moment.</p>
+                </div>
+                <div th:each="enchere : ${encheres}" class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${enchere.nomArticle}">Nom Article</h5>
+                        <p class="card-text" th:text="${enchere.description}">Description</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
-            <span class="text-muted">Placez votre pied de page ici.</span>
+            <span class="text-muted">ENI-Enchères.fr</span>
         </div>
     </footer>
 

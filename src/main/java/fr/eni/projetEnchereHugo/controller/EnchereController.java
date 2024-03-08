@@ -5,6 +5,8 @@ import fr.eni.projetEnchereHugo.bo.Enchere;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -32,10 +34,14 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres")
-    public String ajouterEnchere(@ModelAttribute Enchere enchere) {
+    public String ajouterEnchere(@Validated @ModelAttribute Enchere enchere, BindingResult result) {
+        if (result.hasErrors()) {
+            return "creation-vente"; // Utilisez le nom correct de votre template si différent
+        }
         enchereService.ajouterEnchere(enchere);
-        return "redirect:/"; // redirige vers la page d'accueil après l'ajout
+        return "redirect:/"; // Ou une autre route si nécessaire
     }
+
 
     @PutMapping("/encheres/{id}")
     public String mettreAJourEnchere(@PathVariable int id, @ModelAttribute Enchere enchere) {

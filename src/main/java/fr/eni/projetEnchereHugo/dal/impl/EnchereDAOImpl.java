@@ -21,7 +21,7 @@ public class EnchereDAOImpl implements EnchereDAO {
     private final String SELECT_ENCHERE_BY_ID = "SELECT * FROM Enchere WHERE id = ?";
     private final String UPDATE_ENCHERE = "UPDATE Enchere SET dateEnchere=?, montantEnchere=? WHERE id=?";
     private final String DELETE_ENCHERE = "DELETE FROM Enchere WHERE id=?";
-    private final String SELECT_ALL_ENCHERES = "SELECT * FROM Enchere";
+    private final String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES ";
 
     @Override
     public void save(Enchere enchere) {
@@ -55,7 +55,7 @@ public class EnchereDAOImpl implements EnchereDAO {
             LocalDate dateEnchere = dateEnchereSQL.toLocalDate();
             enchere.setDateEnchere(dateEnchere.atStartOfDay());
         } else {
-            enchere.setDateEnchere(null); // Gérer le cas où la date est nulle
+            enchere.setDateEnchere(null);
         }
         enchere.setMontantEnchere(rs.getInt("montantEnchere"));
         return enchere;

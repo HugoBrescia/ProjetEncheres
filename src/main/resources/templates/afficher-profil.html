@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Afficher Profil</title>
+    <title>Profil</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <nav th:replace="fragment/fragment-entete"></nav>
+    
     <div class="container mt-4">
-        <h2>Afficher Profil</h2>
+        <h2>Profil</h2>
         <form>
             <div class="form-group">
                 <label for="pseudo">Pseudo :</label>
@@ -46,8 +48,7 @@
                 <label for="ville">Ville :</label>
                 <input type="text" class="form-control" id="ville" th:value="${utilisateur.ville}" readonly>
             </div>
-            <a href="/utilisateur/{id}/edit" class="btn btn-primary">Modifier Profil</a>
-            <a href="/" class="btn btn-secondary">Annuler</a>
+            <a href="/logout" class="btn btn-danger">Déconnexion</a>
         </form>
     </div>
 </body>
